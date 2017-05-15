@@ -85,17 +85,18 @@ def extractFeature(image_list, image_dict, net):
         tmpf = feature_standard.reshape(1,feature_standard.size)
         s = tmpf.tolist()
         feat=reduce(lambda x,y: x+y,s)
-        featAll.append(feat)
         num += 1
+        featAll.append([num,feat])
         print 'Num ',num
         # with open(fea_file,'wb') as f:
         #     for x in xrange(0, net.blobs['fc6'].data.shape[0]):
         #         for y in xrange(0, net.blobs['fc6'].data.shape[1]):
         #             f.write(struct.pack('f', net.blobs['fc6'].data[x,y]))
     # print featAll
+
     fwrite=open(VECTOR_DIR+'vector_Toro.txt','a+')
-    for line in featAll:
-        fwrite.write(str(line)+'\n')
+    for [num,line] in featAll:
+        fwrite.write(str(num)+'\t'+str(line)+'\n')
     # x = 1
     # i=1
     # for line_i in featAll:
