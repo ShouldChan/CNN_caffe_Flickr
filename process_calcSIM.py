@@ -23,6 +23,7 @@ import multiprocessing
 t0 = time.time()
 
 image_dict = {}
+
 with open('./Toro_photoID_DESCRIPTION.txt','r') as fi:
     lines = fi.readlines()
     for line in lines:
